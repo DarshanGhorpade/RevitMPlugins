@@ -4,11 +4,19 @@ using System.Linq;
 
 namespace OOPDemo
 {
+    public class Order
+    {
+
+    }
+
     public class Person
     {
         //fields
         public string FirstName;
         public string LastName;
+
+        // readonly: we can initialize at time of declaration or in constructor but not from any methods
+        public readonly List<Order> Orders = new List<Order>();
         //ctor: shortcut for constructor
         // constructor: to do some actions at the time of instantiation of the class
 
@@ -22,11 +30,18 @@ namespace OOPDemo
             :this(firstName)
         {
             this.LastName = lastName;
+            Orders = new List<Order>();
         }
 
         public Person() 
             :this("DefaultFirstName", "DefaultLastName")
-        { }
+        {
+        }
+
+        public void AddOrders(Order order)
+        {
+            Orders.Add(order);
+        }
 
         public void Introduce()
         {

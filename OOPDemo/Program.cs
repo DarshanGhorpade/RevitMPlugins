@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace OOPDemo
 {
@@ -11,7 +12,11 @@ namespace OOPDemo
             // person1.Introduce();
             //Console.WriteLine(person1.GetFullName("+"));
 
-            var testClass = new TestClass();
+            var order = new Order();
+
+            person1.AddOrders(order);
+
+            //var testClass = new TestClass();
             //testClass.DoSomething(person1);
             //Console.WriteLine(person1.GetFullName("+"));
 
@@ -21,22 +26,22 @@ namespace OOPDemo
              * out doesn't requires the variable to be created already
              */
 
-            var value = 15;
+            //var value = 15;
             //Console.WriteLine(value);
             //testClass.DoSomething(ref value);
             //testClass.DoSomething(out var value);
             //Console.WriteLine(value);
 
-            var text = "10";
-            var CanBeParsed = double.TryParse(text, out var number);
-            if(CanBeParsed)
-                Console.WriteLine(number);
+            //var text = "10";
+            //var CanBeParsed = double.TryParse(text, out var number);
+            //if(CanBeParsed)
+            //    Console.WriteLine(number);
 
             //var valuesToCalculate = new double[] { 1.5, 2.4, 1.1, 5.0};
             //Console.WriteLine(person1.Calculate(valuesToCalculate));
             //Console.WriteLine(person1.Calculate(1, 2, 3, 4));
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 
