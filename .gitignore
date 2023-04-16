@@ -5,6 +5,9 @@
 
 # revit project files
 .rvt
+.dll
+.pdb
+.cache
 
 # User-specific files
 *.rsuser
