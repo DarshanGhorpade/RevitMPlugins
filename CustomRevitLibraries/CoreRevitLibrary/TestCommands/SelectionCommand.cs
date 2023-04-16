@@ -18,7 +18,13 @@ namespace CoreRevitLibrary.TestCommands
             var document = uiDocument.Document;
 
             // Using Extension method
-            var walls = document.GetElementsByTypes<Wall>();
+            /*
+            var walls = document.GetElementsByTypes<Wall>()
+                .Where(w=>w.Name.Contains("Brick"));
+            */
+            // Adding delegate to extension method
+            // Gives all walls having Brick in there names
+            var walls = document.GetElementsByTypes<Wall>(w => w.Name.Contains("Brick"));
 
             /*
             var collector = new FilteredElementCollector(document)
