@@ -17,26 +17,21 @@ namespace CoreRevitLibrary.TestCommands
             var uiDocument = uiApplication.ActiveUIDocument;
             var document = uiDocument.Document;
 
-            var references = uiDocument.Selection.PickObjects(ObjectType.Element, new WallSelectionFilter());
+            var references = uiDocument.Selection
+                .PickObjects(
+                    ObjectType.Element,
+                    new ElementSelectionFilter(e => e is Wall),
+                    "Please select walls");
             var components = references.Select(r => document.GetElement(r)).ToList();
             var window = new TestWindow(components);
             window.ShowDialog();
 
             return Result.Succeeded;
         }
-    }
 
-    public class WallSelectionFilter : ISelectionFilter
-    {
-        public bool AllowElement(Element elem)
+        public bool ValidateElement(Element element)
         {
-            //return elem is Wall;
-            return elem.Name.Contains("Brick");
-        }
-
-        public bool AllowReference(Reference reference, XYZ position)
-        {
-            return true;
+            return element is Wall;
         }
     }
 }

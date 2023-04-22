@@ -53,6 +53,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CurrentDocumentOption.cs" />
+    <Compile Include="Extensions\IPickElementsOption.cs" />
+    <Compile Include="Extensions\LinkDocumentOption.cs" />
+    <Compile Include="Extensions\UIDocumentExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectionExercises\Task1.cs" />
     <Compile Include="SelectionExercises\Task1Alternative.cs" />
@@ -64,10 +68,18 @@
     <Compile Include="SelectionExercises\Task3.cs" />
     <Compile Include="SelectionExercises\Task4.cs" />
     <Compile Include="Extensions\DocumentExtensions.cs" />
+    <Compile Include="Extensions\BaseSelectionFilter.cs" />
+    <Compile Include="Extensions\ElementSelectionFilter.cs" />
+    <Compile Include="Extensions\LinkableSelectionFilter.cs" />
+    <Compile Include="TestCommands\PickObjectByReferenceCommand.cs" />
+    <Compile Include="TestCommands\PickObjectCommand.cs" />
+    <Compile Include="TestCommands\SelectCommandUsingUIDocExtensionMethod.cs" />
+    <Compile Include="TestCommands\SelectionCommand5.cs" />
     <Compile Include="TestCommands\SelectionCommand.cs" />
     <Compile Include="TestCommands\TestWindow.xaml.cs">
       <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\WallSelectionFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="TestCommands\TestWindow.xaml">

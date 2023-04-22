@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -21,6 +22,12 @@ namespace CoreRevitLibrary.Extensions
                 .GetElementIds()
                 .Select(id => uiDocument.Document.GetElement(id))
                 .ToList();
+        }
+
+        public static List<Element> PickElements(this UIDocument uiDocument, Func<Element, bool> validateElement,
+            IPickElementsOption pickElementsOption, string statusPrompt = "")
+        {
+            return pickElementsOption.PickElements(uiDocument, validateElement, statusPrompt);
         }
     }
 }
