@@ -1,6 +1,8 @@
 ﻿/*
  * Module 4 Practice
  */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.Attributes;
@@ -28,8 +30,10 @@ namespace CoreRevitLibrary.Module6WorkingWithParameters
             var markParameters = selectedWall.GetParameters("Mark")
                 .Where(p => (p.Definition as InternalDefinition)?.BuiltInParameter != BuiltInParameter.INVALID);
             var markParameterAsBulitIn = selectedWall.get_Parameter(BuiltInParameter.ALL_MODEL_MARK);
+            var guid = new Guid("22430231-9c20-4ac2-b677-49c7f9c9b907");
+            var wallParam = selectedWall.get_Parameter(guid);
             // Get Elements by Name
-            var window = new TestWindow(markParameters.Select(p=>p.Definition.Name));
+            var window = new TestWindow(new List<string>(){wallParam.Definition.Name});
             window.ShowDialog();
 
             return Result.Succeeded;
