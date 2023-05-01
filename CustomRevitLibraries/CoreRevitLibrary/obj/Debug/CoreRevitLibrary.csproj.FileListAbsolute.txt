@@ -1,0 +1,11 @@
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\bin\Debug\CoreRevitLibrary.dll
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\bin\Debug\CoreRevitLibrary.pdb
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\TestCommands\TestWindow.g.cs
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary_MarkupCompile.cache
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary_MarkupCompile.lref
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\TestCommands\TestWindow.baml
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary.g.resources
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary.csproj.CoreCompileInputs.cache
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary.dll
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary.pdb
+D:\D\CustomAPIs\CustomRevitLibraries\CoreRevitLibrary\obj\Debug\CoreRevitLibrary.csprojAssemblyReference.cache
