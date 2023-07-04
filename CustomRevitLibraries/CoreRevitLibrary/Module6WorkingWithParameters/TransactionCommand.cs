@@ -25,10 +25,13 @@ namespace CoreRevitLibrary.Module6WorkingWithParameters
 
             using (Transaction transaction = new Transaction(document, "set new mark"))
             {
+                TaskDialog.Show("Before", transaction.GetStatus().ToString());
                 transaction.Start();
+                TaskDialog.Show("Inside", transaction.GetStatus().ToString());
                 //markParameter.Set("NewMarkValue");
                 baseConstraintParameter.Set(secondLevel.Id);
                 transaction.Commit();
+                TaskDialog.Show("After", transaction.GetStatus().ToString());
             }
 
             return result;
