@@ -18,7 +18,7 @@ namespace CoreRevitLibrary.Extensions
         /// <param name="validate">A delegate for validation</param>
         /// <returns>Elements</returns>
         // Using Generics
-        public static List<TElement> GetElementsByTypes<TElement>(this Document document, Func<TElement, bool> validate = null)
+        public static List<TElement> GetElementsByType<TElement>(this Document document, Func<TElement, bool> validate = null)
         where TElement : Element
         {
             // checking validate null or not
@@ -32,7 +32,7 @@ namespace CoreRevitLibrary.Extensions
             var elements = new FilteredElementCollector(document)
                 .OfClass(typeof(TElement))
                 .Cast<TElement>()
-                .Where(e=>validate(e))
+                .Where(e => validate(e))
                 .ToList();
 
             return elements;
@@ -159,6 +159,66 @@ namespace CoreRevitLibrary.Extensions
             return new FilteredElementCollector(document)
                 .WherePasses(multiClassFilter)
                 .ToList();
+        }
+
+        public static void Run(this Document document, Action doAction,
+            string transactionName = "Default transaction name")
+        {
+            using (Transaction transaction = new Transaction(document, transactionName))
+            {
+                transaction.Start();
+                doAction.Invoke();
+                transaction.Commit();
+            }
+        }
+
+        public static TReturn Run<TReturn>(this Document document, Func<TReturn> doAction,
+            string transactionName = "Default transaction name")
+        {
+            TReturn output;
+            using (Transaction transaction = new Transaction(document, transactionName))
+            {
+                transaction.Start();
+                output = doAction.Invoke();
+                transaction.Commit();
+            }
+
+            return output;
+        }
+
+        public static TElement GetElement<TElement>(this Document document, ElementId elementId)
+            where TElement : Element
+        {
+            return document.GetElement(elementId) as TElement;
+        }
+
+        /// <summary>
+        /// This method is used to create direct shapes in a Revit Document
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="geometryObjects"></param>
+        /// <param name="builtInCategory"></param>
+        /// <returns>DirectShape</returns>
+        public static DirectShape CreateDirectShape(
+            this Document document,
+            IEnumerable<GeometryObject> geometryObjects, 
+            BuiltInCategory builtInCategory = BuiltInCategory.OST_GenericModel)
+        {
+            var directShape = DirectShape.CreateElement(document, new ElementId(builtInCategory));
+            directShape.SetShape(geometryObjects.ToList());
+
+            return directShape;
+        }
+
+        public static DirectShape CreateDirectShape(
+            this Document document, 
+            GeometryObject geometryObject, 
+            BuiltInCategory builtInCategory = BuiltInCategory.OST_GenericModel)
+        {
+            var directShape = DirectShape.CreateElement(document, new ElementId(builtInCategory));
+            directShape.SetShape(new List<GeometryObject> { geometryObject });
+
+            return directShape;
         }
     }
 }
